@@ -1,4 +1,4 @@
-# mpvue-builder
+# mpvue-packager
 
 > mpvue 集成构建工具
 
@@ -13,7 +13,7 @@ vue init F-loat/mpvue-quickstart#next my-project
 ## 安装
 
 ``` bash
-npm i mpvue-builder -D
+npm i mpvue-packager -D
 ```
 
 ## 使用
