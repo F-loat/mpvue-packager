@@ -31,15 +31,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|vue)$/,
-        loader: 'eslint-loader',
-        enforce: 'pre',
-        include: utils.resolve('src'),
-        options: {
-          formatter: require('eslint-friendly-formatter')
-        }
-      },
-      {
         test: /\.vue$/,
         loader: 'mpvue-loader',
         options: vueLoaderConfig
