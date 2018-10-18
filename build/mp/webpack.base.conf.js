@@ -2,11 +2,11 @@ const program = require('commander')
 const MpvuePlugin = require('webpack-mpvue-asset-plugin')
 const MpvueEntry = require('mpvue-entry')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const utils = require('./utils')
-const config = require('../config')
-const vueLoaderConfig = require('./vue-loader.conf')
+const config = require('./config')
+const utils = require('../utils')
+const vueLoaderConfig = require('../vue-loader.conf')
 
-const entry = MpvueEntry.getEntry(program.pages || './src/pages.js')
+const entry = MpvueEntry.getEntry(program.pages)
 
 module.exports = {
   entry,

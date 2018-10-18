@@ -1,15 +1,19 @@
+'use strict'
 const path = require('path')
+const program = require('commander')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const config = require('../config')
+const config = require(`./${program.mode}/config`)
+const packageConfig = require('../package.json')
 
-exports.resolve = function (dir) {
-  return path.join(process.cwd(), dir)
+exports.resolve = function (...dir) {
+  return path.join(process.cwd(), ...dir)
 }
 
 exports.assetsPath = function (_path) {
   const assetsSubDirectory = process.env.NODE_ENV === 'production'
     ? config.build.assetsSubDirectory
     : config.dev.assetsSubDirectory
+
   return path.posix.join(assetsSubDirectory, _path)
 }
 
@@ -27,7 +31,7 @@ exports.cssLoaders = function (options) {
   const postcssLoader = {
     loader: 'postcss-loader',
     options: {
-      sourceMap: true
+      sourceMap: options.sourceMap
     }
   }
 
@@ -41,7 +45,16 @@ exports.cssLoaders = function (options) {
 
   // generate loader string to be used with extract text plugin
   function generateLoaders (loader, loaderOptions) {
-    const loaders = [cssLoader, px2rpxLoader, postcssLoader]
+    const loaders = [cssLoader]
+    
+    if (options.usePostCSS) {
+      loaders.push(postcssLoader)
+    }
+
+    if (program.mode === 'mp') {
+      loaders.push(px2rpxLoader)
+    }
+
     if (loader) {
       loaders.push({
         loader: loader + '-loader',
@@ -80,6 +93,7 @@ exports.cssLoaders = function (options) {
 exports.styleLoaders = function (options) {
   const output = []
   const loaders = exports.cssLoaders(options)
+
   for (const extension in loaders) {
     const loader = loaders[extension]
     output.push({
@@ -87,5 +101,6 @@ exports.styleLoaders = function (options) {
       use: loader
     })
   }
+
   return output
 }

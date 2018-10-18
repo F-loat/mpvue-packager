@@ -4,14 +4,14 @@ const merge = require('webpack-merge')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-const utils = require('./utils')
-const config = require('../config')
+const utils = require('../utils')
+const config = require('./config')
 const baseWebpackConfig = require('./webpack.base.conf')
 
 let extraWebpackConfig
 
 try {
-  extraWebpackConfig = require(utils.resolve(program.config || 'webpack.conf.js'))
+  extraWebpackConfig = require(utils.resolve(program.config))
 } catch (err) {
   extraWebpackConfig = {}
 }
