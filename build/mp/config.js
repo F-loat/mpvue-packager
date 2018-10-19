@@ -1,10 +1,10 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
-var path = require('path')
+const path = require('path')
 
 module.exports = {
   dev: {
     env: require('../../env/dev'),
-    assetsSubDirectory: '*',
+    assetsSubDirectory: '',
     assetsPublicPath: '/',
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
@@ -16,7 +16,7 @@ module.exports = {
   build: {
     env: require('../../env/prod'),
     assetsRoot: path.join(process.cwd(), 'dist'),
-    assetsSubDirectory: '*',
+    assetsSubDirectory: '',
     assetsPublicPath: '/',
     productionSourceMap: false,
     // Gzip off by default as many popular static hosts such as
