@@ -1,6 +1,6 @@
 {
   "name": "mpvue-packager",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "mpvue 集成构建工具",
   "main": "bin/index.js",
   "bin": {
