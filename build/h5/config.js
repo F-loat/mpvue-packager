@@ -6,11 +6,8 @@ const path = require('path')
 
 module.exports = {
   dev: {
-    env: require('../../env/dev'),
-
     // Paths
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
     proxyTable: {},
 
     // Various Dev Server settings
@@ -51,7 +48,6 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(process.cwd(), './dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
 
     /**
      * Source Maps

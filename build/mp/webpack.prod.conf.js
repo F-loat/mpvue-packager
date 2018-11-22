@@ -16,8 +16,6 @@ try {
   extraWebpackConfig = {}
 }
 
-const env = config.build.env
-
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({
@@ -34,7 +32,7 @@ const webpackConfig = merge(baseWebpackConfig, {
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
-      'process.env': env
+      'process.env': process.env
     }),
     new UglifyJsPlugin({
       sourceMap: true

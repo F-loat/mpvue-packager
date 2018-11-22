@@ -11,8 +11,6 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const config = require('./config')
 const utils = require('../utils')
 
-const env = require('../../env/dev')
-
 let extraWebpackConfig
 
 try {
@@ -61,7 +59,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': env
+      'process.env': process.env
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.

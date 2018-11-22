@@ -11,6 +11,8 @@ program
   .command('dev')
   .description('run remote setup commands')
   .action(() => {
+    process.env.NODE_ENV = 'development'
+    process.env.MODE = program.mode
     require(`../build/${program.mode}/dev`)
   })
 
@@ -18,6 +20,8 @@ program
   .command('build')
   .description('run remote setup commands')
   .action(() => {
+    process.env.NODE_ENV = 'production'
+    process.env.MODE = program.mode
     require('../build/build')
   })
 

@@ -12,8 +12,6 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const config = require('./config')
 const utils = require('../utils')
 
-const env = require('../../env/prod')
-
 let extraWebpackConfig
 
 try {
@@ -39,7 +37,7 @@ const webpackConfig = merge(baseWebpackConfig, {
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
-      'process.env': env
+      'process.env': process.env
     }),
     new UglifyJsPlugin({
       uglifyOptions: {

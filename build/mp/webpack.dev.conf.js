@@ -33,7 +33,7 @@ module.exports = merge(baseWebpackConfig, {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': config.dev.env
+      'process.env': process.env
     }),
     // copy from ./webpack.prod.conf.js
     // extract css into its own file
