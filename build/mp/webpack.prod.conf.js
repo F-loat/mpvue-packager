@@ -1,3 +1,5 @@
+'use strict'
+
 const program = require('commander')
 const webpack = require('webpack')
 const merge = require('webpack-merge')

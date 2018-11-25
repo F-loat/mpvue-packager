@@ -1,6 +1,6 @@
 'use strict'
+
 const path = require('path')
-const program = require('commander')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const config = require('./config')
 
@@ -48,7 +48,7 @@ exports.cssLoaders = function (options) {
       loaders.push(postcssLoader)
     }
 
-    if (program.mode === 'mp') {
+    if (process.env.MODE === 'mp') {
       loaders.push(px2rpxLoader)
     }
 

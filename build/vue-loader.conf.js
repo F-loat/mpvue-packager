@@ -1,16 +1,18 @@
 'use strict'
-const program = require('commander')
+
 const utils = require('./utils')
 const config = require('./config')
-const isProduction = process.env.NODE_ENV === 'production'
-const sourceMapEnabled = isProduction
-  ? config.productionSourceMap
-  : config.cssSourceMap
+
+const { MODE, NODE_ENV } = process.env
+const { productionSourceMap, cssSourceMap } = config
+
+const isProduction = NODE_ENV === 'production'
+const sourceMapEnabled = isProduction ? productionSourceMap : cssSourceMap
 
 module.exports = {
   loaders: utils.cssLoaders({
     sourceMap: sourceMapEnabled,
-    extract: program.mode === 'h5' ? isProduction : true
+    extract: MODE === 'h5' ? isProduction : true
   }),
   cssSourceMap: sourceMapEnabled,
   cacheBusting: config.cacheBusting,

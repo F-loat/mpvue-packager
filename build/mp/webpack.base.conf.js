@@ -1,3 +1,6 @@
+'use strict'
+
+const path = require('path')
 const program = require('commander')
 const webpack = require('webpack')
 const MpvuePlugin = require('webpack-mpvue-asset-plugin')
@@ -18,10 +21,11 @@ const createLintingRule = () => ({
   }
 })
 
-const entry = MpvueEntry.getEntry(program.pages)
-
 module.exports = {
-  entry,
+  entry: MpvueEntry.getEntry({
+    pages: program.pages,
+    dist: config.assetsRoot
+  }),
   target: require('mpvue-webpack-target'),
   output: {
     path: config.assetsRoot,
@@ -89,7 +93,7 @@ module.exports = {
     new CopyWebpackPlugin([
       {
         from: utils.resolve('static'),
-        to: utils.resolve('dist/static'),
+        to: path.join(config.assetsRoot, 'static'),
         ignore: ['.*']
       }
     ]),

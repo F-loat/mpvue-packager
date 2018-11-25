@@ -1,14 +1,14 @@
 'use strict'
+
 require('./check-versions')()
 
 const ora = require('ora')
 const rm = require('rimraf')
 const path = require('path')
 const chalk = require('chalk')
-const program = require('commander')
 const webpack = require('webpack')
 const config = require('./config')
-const webpackConfig = require(`./${program.mode}/webpack.prod.conf`)
+const webpackConfig = require(`./${process.env.MODE}/webpack.prod.conf`)
 
 const spinner = ora('building for production...')
 spinner.start()

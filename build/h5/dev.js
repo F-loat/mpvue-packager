@@ -1,3 +1,5 @@
+'use strict'
+
 require('../check-versions')()
 
 const webpack = require('webpack')

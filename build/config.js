@@ -1,6 +1,7 @@
 'use strict'
 
 const path = require('path')
+const program = require('commander')
 
 const { MODE, NODE_ENV } = process.env;
 
@@ -9,8 +10,8 @@ module.exports = {
     MODE: JSON.stringify(MODE),
     NODE_ENV: JSON.stringify(NODE_ENV)
   },
-  index: path.join(process.cwd(), './dist/index.html'),
-  assetsRoot: path.join(process.cwd(), './dist'),
+  index: path.join(process.cwd(), program.output, 'index.html'),
+  assetsRoot: path.join(process.cwd(), program.output),
   assetsSubDirectory: MODE === 'mp' ? '' : 'static',
   proxyTable: {},
   host: 'localhost',
