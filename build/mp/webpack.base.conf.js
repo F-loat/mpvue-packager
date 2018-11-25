@@ -1,10 +1,22 @@
 const program = require('commander')
+const webpack = require('webpack')
 const MpvuePlugin = require('webpack-mpvue-asset-plugin')
 const MpvueEntry = require('mpvue-entry')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const config = require('./config')
+const config = require('../config')
 const utils = require('../utils')
 const vueLoaderConfig = require('../vue-loader.conf')
+
+const createLintingRule = () => ({
+  test: /\.(js|vue)$/,
+  loader: 'eslint-loader',
+  enforce: 'pre',
+  include: utils.resolve('src'),
+  options: {
+    formatter: require('eslint-friendly-formatter'),
+    emitWarning: !config.showEslintErrorsInOverlay
+  }
+})
 
 const entry = MpvueEntry.getEntry(program.pages)
 
@@ -12,7 +24,7 @@ module.exports = {
   entry,
   target: require('mpvue-webpack-target'),
   output: {
-    path: config.build.assetsRoot,
+    path: config.assetsRoot,
     filename: '[name].js',
     publicPath: '/'
   },
@@ -28,6 +40,7 @@ module.exports = {
   },
   module: {
     rules: [
+      ...(config.useEslint ? [createLintingRule()] : []),
       {
         test: /\.vue$/,
         loader: 'mpvue-loader',
@@ -79,6 +92,9 @@ module.exports = {
         to: utils.resolve('dist/static'),
         ignore: ['.*']
       }
-    ])
+    ]),
+    new webpack.DefinePlugin({
+      'process.env': config.env
+    })
   ]
 }

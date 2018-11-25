@@ -4,8 +4,8 @@ const merge = require('webpack-merge')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const config = require('../config')
 const utils = require('../utils')
-const config = require('./config')
 const baseWebpackConfig = require('./webpack.base.conf')
 
 let extraWebpackConfig
@@ -19,21 +19,17 @@ try {
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({
-      sourceMap: config.build.productionSourceMap,
+      sourceMap: config.productionSourceMap,
       extract: true
     })
   },
-  devtool: config.build.productionSourceMap ? '#source-map' : false,
+  devtool: config.productionSourceMap ? config.devtool : false,
   output: {
-    path: config.build.assetsRoot,
+    path: config.assetsRoot,
     filename: utils.assetsPath('[name].js'),
     chunkFilename: utils.assetsPath('[id].js')
   },
   plugins: [
-    // http://vuejs.github.io/vue-loader/en/workflow/production.html
-    new webpack.DefinePlugin({
-      'process.env': process.env
-    }),
     new UglifyJsPlugin({
       sourceMap: true
     }),
@@ -71,7 +67,7 @@ const webpackConfig = merge(baseWebpackConfig, {
   ]
 }, extraWebpackConfig)
 
-if (config.build.bundleAnalyzerReport) {
+if (config.bundleAnalyzerReport) {
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
   webpackConfig.plugins.push(new BundleAnalyzerPlugin())
 }

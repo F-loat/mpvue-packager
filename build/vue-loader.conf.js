@@ -1,11 +1,11 @@
 'use strict'
 const program = require('commander')
 const utils = require('./utils')
-const config = require(`./${program.mode}/config`)
+const config = require('./config')
 const isProduction = process.env.NODE_ENV === 'production'
 const sourceMapEnabled = isProduction
-  ? config.build.productionSourceMap
-  : config.dev.cssSourceMap
+  ? config.productionSourceMap
+  : config.cssSourceMap
 
 module.exports = {
   loaders: utils.cssLoaders({
@@ -13,7 +13,7 @@ module.exports = {
     extract: program.mode === 'h5' ? isProduction : true
   }),
   cssSourceMap: sourceMapEnabled,
-  cacheBusting: config.dev.cacheBusting,
+  cacheBusting: config.cacheBusting,
   transformToRequire: {
     video: ['src', 'poster'],
     source: 'src',

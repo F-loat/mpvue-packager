@@ -8,7 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 const baseWebpackConfig = require('./webpack.base.conf')
-const config = require('./config')
+const config = require('../config')
 const utils = require('../utils')
 
 let extraWebpackConfig
@@ -25,49 +25,45 @@ const PORT = process.env.PORT && Number(process.env.PORT)
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({
-      sourceMap: config.dev.cssSourceMap,
+      sourceMap: config.cssSourceMap,
       usePostCSS: true
     })
   },
-  // cheap-module-eval-source-map is faster for development
-  devtool: config.dev.devtool,
+  devtool: config.devtool,
 
   // these devServer options should be customized in /config/index.js
   devServer: {
     clientLogLevel: 'warning',
     historyApiFallback: {
       rewrites: [
-        { from: /.*/, to: path.posix.join(config.dev.assetsPublicPath, 'index.html') },
+        { from: /.*/, to: 'index.html' },
       ],
     },
     hot: true,
     inline: true,
     contentBase: false, // since we use CopyWebpackPlugin.
     compress: true,
-    host: HOST || config.dev.host,
+    host: HOST || config.host,
     hot: true,
-    port: PORT || config.dev.port,
-    open: config.dev.autoOpenBrowser,
-    overlay: config.dev.errorOverlay
+    port: PORT || config.port,
+    open: config.autoOpenBrowser,
+    overlay: config.errorOverlay
       ? { warnings: false, errors: true }
       : false,
-    publicPath: config.dev.assetsPublicPath,
-    proxy: config.dev.proxyTable,
+    publicPath: '',
+    proxy: config.proxyTable,
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
-      poll: config.dev.poll,
+      poll: config.poll,
     }
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': process.env
-    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
     new webpack.NoEmitOnErrorsPlugin(),
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      filename: config.build.index,
+      filename: config.index,
       template: 'index.html',
       inject: true
     }),
@@ -75,7 +71,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new CopyWebpackPlugin([
       {
         from: utils.resolve('./static'),
-        to: config.build.assetsSubDirectory,
+        to: config.assetsSubDirectory,
         ignore: ['.*']
       }
     ])
@@ -83,7 +79,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 }, extraWebpackConfig)
 
 module.exports = new Promise((resolve, reject) => {
-  portfinder.basePort = process.env.PORT || config.dev.port
+  portfinder.basePort = process.env.PORT || config.port
   portfinder.getPort((err, port) => {
     if (err) {
       reject(err)

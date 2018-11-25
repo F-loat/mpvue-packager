@@ -1,6 +1,6 @@
 'use strict'
-const path = require('path')
-const config = require('./config')
+const webpack = require('webpack')
+const config = require('../config')
 const utils = require('../utils')
 const vueLoaderConfig = require('../vue-loader.conf')
 
@@ -11,14 +11,14 @@ const createLintingRule = () => ({
   include: utils.resolve('src'),
   options: {
     formatter: require('eslint-friendly-formatter'),
-    emitWarning: !config.dev.showEslintErrorsInOverlay
+    emitWarning: !config.showEslintErrorsInOverlay
   }
 })
 
 module.exports = {
   entry: utils.resolve('./src/main.js'),
   output: {
-    path: config.build.assetsRoot,
+    path: config.assetsRoot,
     filename: '[name].js',
     publicPath: '/'
   },
@@ -31,7 +31,7 @@ module.exports = {
   },
   module: {
     rules: [
-      ...(config.dev.useEslint ? [createLintingRule()] : []),
+      ...(config.useEslint ? [createLintingRule()] : []),
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -68,6 +68,11 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': config.env
+    })
+  ],
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue
     // source contains it (although only uses it if it's native).

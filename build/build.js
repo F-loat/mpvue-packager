@@ -7,13 +7,13 @@ const path = require('path')
 const chalk = require('chalk')
 const program = require('commander')
 const webpack = require('webpack')
-const config = require(`./${program.mode}/config`)
+const config = require('./config')
 const webpackConfig = require(`./${program.mode}/webpack.prod.conf`)
 
 const spinner = ora('building for production...')
 spinner.start()
 
-rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
+rm(path.join(config.assetsRoot, config.assetsSubDirectory), err => {
   if (err) throw err
   webpack(webpackConfig, (err, stats) => {
     spinner.stop()

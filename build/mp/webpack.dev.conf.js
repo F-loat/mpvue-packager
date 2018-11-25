@@ -4,8 +4,8 @@ const merge = require('webpack-merge')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const config = require('../config')
 const utils = require('../utils')
-const config = require('./config')
 const baseWebpackConfig = require('./webpack.base.conf')
 
 let extraWebpackConfig
@@ -19,22 +19,16 @@ try {
 module.exports = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({
-      sourceMap: config.dev.cssSourceMap,
+      sourceMap: config.cssSourceMap,
       extract: true
     })
   },
-  // cheap-module-eval-source-map is faster for development
-  // devtool: '#cheap-module-eval-source-map',
-  devtool: '#source-map',
   output: {
-    path: config.build.assetsRoot,
+    path: config.assetsRoot,
     filename: utils.assetsPath('[name].js'),
     chunkFilename: utils.assetsPath('[id].js')
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': process.env
-    }),
     // copy from ./webpack.prod.conf.js
     // extract css into its own file
     new ExtractTextPlugin({
