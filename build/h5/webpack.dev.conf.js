@@ -3,7 +3,6 @@
 const program = require('commander')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
@@ -66,15 +65,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       filename: config.index,
       template: 'index.html',
       inject: true
-    }),
-    // copy custom static assets
-    new CopyWebpackPlugin([
-      {
-        from: utils.resolve('./static'),
-        to: config.assetsSubDirectory,
-        ignore: ['.*']
-      }
-    ])
+    })
   ]
 }, extraWebpackConfig)
 

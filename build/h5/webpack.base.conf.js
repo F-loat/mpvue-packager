@@ -1,6 +1,8 @@
 'use strict'
 
 const webpack = require('webpack')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const config = require('../config')
 const utils = require('../utils')
 const vueLoaderConfig = require('../vue-loader.conf')
@@ -72,7 +74,16 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': config.env
-    })
+    }),
+    new ProgressBarPlugin(),
+    // copy custom static assets
+    new CopyWebpackPlugin([
+      {
+        from: utils.resolve('./static'),
+        to: config.assetsSubDirectory,
+        ignore: ['.*']
+      }
+    ])
   ],
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue
