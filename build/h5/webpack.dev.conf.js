@@ -1,6 +1,5 @@
 'use strict'
 
-const program = require('commander')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -9,14 +8,6 @@ const portfinder = require('portfinder')
 const baseWebpackConfig = require('./webpack.base.conf')
 const config = require('../config')
 const utils = require('../utils')
-
-let extraWebpackConfig
-
-try {
-  extraWebpackConfig = require(utils.resolve(program.config))
-} catch (err) {
-  extraWebpackConfig = {}
-}
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
@@ -67,7 +58,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       inject: true
     })
   ]
-}, extraWebpackConfig)
+})
 
 module.exports = new Promise((resolve, reject) => {
   portfinder.basePort = config.port

@@ -1,6 +1,8 @@
 'use strict'
 
 const path = require('path')
+const program = require('commander')
+const merge = require('webpack-merge')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const config = require('./config')
 
@@ -12,6 +14,24 @@ exports.assetsPath = function (_path) {
   const assetsSubDirectory = config.assetsSubDirectory
 
   return path.posix.join(assetsSubDirectory, _path)
+}
+
+exports.mergeExtraConfig = function (config) {
+  let extraWebpackConfig
+
+  try {
+    extraWebpackConfig = require(utils.resolve(program.config))
+  } catch (err) {
+    extraWebpackConfig = {}
+  }
+
+  if (typeof extraWebpackConfig === 'object') {
+    return merge(config, extraWebpackConfig)
+  } else if (typeof extraWebpackConfig === 'function') {
+    return extraWebpackConfig(config)
+  }
+
+  return config
 }
 
 exports.cssLoaders = function (options) {

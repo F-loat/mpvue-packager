@@ -1,6 +1,5 @@
 'use strict'
 
-const program = require('commander')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
@@ -9,14 +8,6 @@ const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const config = require('../config')
 const utils = require('../utils')
 const baseWebpackConfig = require('./webpack.base.conf')
-
-let extraWebpackConfig
-
-try {
-  extraWebpackConfig = require(utils.resolve(program.config))
-} catch (err) {
-  extraWebpackConfig = {}
-}
 
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -67,7 +58,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       chunks: ['common/vendor']
     })
   ]
-}, extraWebpackConfig)
+})
 
 if (config.bundleAnalyzerReport) {
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin

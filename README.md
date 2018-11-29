@@ -37,7 +37,7 @@ npm i mpvue-packager -D
 
 * 打包配置
 
-通过 `-c` 或 `--config` 指定自定义打包配置文件，会与默认配置做合并处理，默认为 `webpack.conf.js`
+通过 `-c` 或 `--config` 指定自定义打包配置文件，默认为 `webpack.conf.js`
 
 * 打包模式
 
@@ -67,7 +67,10 @@ npm i mpvue-packager -D
 ## Tips
 
 * 可通过 `process.env.NODE_ENV` 判断当前构建环境，可选值 `['production', 'development']`
+
 * 可通过 `process.env.MODE` 判断当前构建模式，可选值 `['mp', 'h5']`
+
+* 自定义配置支持 `['object', 'function']` 两种形式，`object` 类型会与默认配置做合并处理，`function` 类型的入参为现有配置，需返回修改后的配置
 
 
 ## Change log

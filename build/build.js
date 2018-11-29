@@ -9,13 +9,16 @@ const chalk = require('chalk')
 const webpack = require('webpack')
 const config = require('./config')
 const webpackConfig = require(`./${process.env.MODE}/webpack.prod.conf`)
+const { mergeExtraConfig } = require('../utils')
+
+const finallyWebpackConfig = mergeExtraConfig(webpackConfig)
 
 const spinner = ora('building for production...')
 spinner.start()
 
 rm(path.join(config.assetsRoot, config.assetsSubDirectory), err => {
   if (err) throw err
-  webpack(webpackConfig, (err, stats) => {
+  webpack(finallyWebpackConfig, (err, stats) => {
     spinner.stop()
     if (err) throw err
     process.stdout.write(stats.toString({

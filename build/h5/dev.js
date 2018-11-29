@@ -4,17 +4,20 @@ require('../check-versions')()
 
 const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
+const { mergeExtraConfig } = require('../utils')
 
 module.exports = require('./webpack.dev.conf').then(webpackConfig => {
-  const devServerOptions = Object.assign({}, webpackConfig.devServer, {
+  const finallyWebpackConfig = mergeExtraConfig(webpackConfig)
+  const devServerOptions = Object.assign({}, finallyWebpackConfig.devServer, {
     stats: {
       colors: true
     }
   })
-  WebpackDevServer.addDevServerEntrypoints(webpackConfig, devServerOptions)
 
-  const compiler = webpack(webpackConfig)
+  WebpackDevServer.addDevServerEntrypoints(finallyWebpackConfig, devServerOptions)
+
+  const compiler = webpack(finallyWebpackConfig)
   const server = new WebpackDevServer(compiler, devServerOptions)
 
-  server.listen(webpackConfig.devServer.port)
+  server.listen(finallyWebpackConfig.devServer.port)
 })

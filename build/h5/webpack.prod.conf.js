@@ -1,7 +1,6 @@
 'use strict'
 
 const path = require('path')
-const program = require('commander')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -11,14 +10,6 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const baseWebpackConfig = require('./webpack.base.conf')
 const config = require('../config')
 const utils = require('../utils')
-
-let extraWebpackConfig
-
-try {
-  extraWebpackConfig = require(utils.resolve(program.config))
-} catch (err) {
-  extraWebpackConfig = {}
-}
 
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -111,7 +102,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       minChunks: 3
     })
   ]
-}, extraWebpackConfig)
+})
 
 if (config.productionGzip) {
   const CompressionWebpackPlugin = require('compression-webpack-plugin')

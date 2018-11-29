@@ -5,10 +5,12 @@ require('../check-versions')()
 const webpack = require('webpack')
 const hardDisk = require('webpack-dev-middleware-hard-disk')
 const webpackConfig = require('./webpack.dev.conf')
+const { mergeExtraConfig } = require('../utils')
 
-const compiler = webpack(webpackConfig)
+const finallyWebpackConfig = mergeExtraConfig(webpackConfig)
+const compiler = webpack(finallyWebpackConfig)
 
 module.exports = hardDisk(compiler, {
-  publicPath: webpackConfig.output.publicPath,
+  publicPath: finallyWebpackConfig.output.publicPath,
   quiet: true
 })

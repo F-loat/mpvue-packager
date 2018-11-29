@@ -1,6 +1,5 @@
 'use strict'
 
-const program = require('commander')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
@@ -9,14 +8,6 @@ const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const config = require('../config')
 const utils = require('../utils')
 const baseWebpackConfig = require('./webpack.base.conf')
-
-let extraWebpackConfig
-
-try {
-  extraWebpackConfig = require(utils.resolve(program.config))
-} catch (err) {
-  extraWebpackConfig = {}
-}
 
 module.exports = merge(baseWebpackConfig, {
   module: {
@@ -64,4 +55,4 @@ module.exports = merge(baseWebpackConfig, {
     new webpack.NoEmitOnErrorsPlugin(),
     new FriendlyErrorsPlugin()
   ]
-}, extraWebpackConfig)
+})
