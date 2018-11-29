@@ -70,7 +70,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 }, extraWebpackConfig)
 
 module.exports = new Promise((resolve, reject) => {
-  portfinder.basePort = process.env.PORT || config.port
+  portfinder.basePort = config.port
   portfinder.getPort((err, port) => {
     if (err) {
       reject(err)

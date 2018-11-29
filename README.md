@@ -47,9 +47,13 @@ npm i mpvue-packager -D
 
 通过 `-o` 或 `--output` 指定输出路径，默认为 `dist`
 
+* 监听端口
+
+通过 `-p` 或 `--port` 指定监听端口，默认为 `8080`
+
 * 页面配置
 
-通过 `-p` 或 `--pages` 指定页面配置文件，默认为 `src/pages.js`
+通过 `--pages` 指定页面配置文件，默认为 `src/pages.js`
 
 
 ## Tips

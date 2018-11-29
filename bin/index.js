@@ -6,7 +6,8 @@ program
   .option('-c, --config <path>', 'set webpack config path. defaults to ./webpack.conf.js', './webpack.conf.js')
   .option('-m, --mode <type>', 'set build mode type. defaults to mp', 'mp')
   .option('-o, --output <path>', 'set outpot path. defaults to ./dist', './dist')
-  .option('-p, --pages <path>', 'set pages config path. defaults to ./src/pages.js', './src/pages.js')
+  .option('-p, --port <port>', 'set dev-server port. defaults to 8080', '8080')
+  .option('--pages <path>', 'set pages config path. defaults to ./src/pages.js', './src/pages.js')
 
 program
   .command('dev')

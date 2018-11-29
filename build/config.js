@@ -3,7 +3,7 @@
 const path = require('path')
 const program = require('commander')
 
-const { MODE, NODE_ENV } = process.env;
+const { MODE, NODE_ENV, PORT } = process.env;
 
 module.exports = {
   env: {
@@ -15,7 +15,7 @@ module.exports = {
   assetsSubDirectory: MODE === 'mp' ? '' : 'static',
   proxyTable: {},
   host: 'localhost',
-  port: 8080,
+  port: PORT || program.port,
   autoOpenBrowser: false,
   errorOverlay: true,
   notifyOnErrors: true,
