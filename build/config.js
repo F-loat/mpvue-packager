@@ -16,7 +16,7 @@ module.exports = {
   proxyTable: {},
   host: 'localhost',
   port: PORT || program.port,
-  autoOpenBrowser: false,
+  autoOpenBrowser: !!program.open,
   errorOverlay: true,
   notifyOnErrors: true,
   poll: false,

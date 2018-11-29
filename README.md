@@ -51,6 +51,10 @@ npm i mpvue-packager -D
 
 通过 `-p` 或 `--port` 指定监听端口，默认为 `8080`
 
+* 自动打开
+
+通过 `--open` 指定自动打开浏览器，默认为 `false`
+
 * 页面配置
 
 通过 `--pages` 指定页面配置文件，默认为 `src/pages.js`
