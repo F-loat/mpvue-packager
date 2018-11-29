@@ -7,6 +7,7 @@ program
   .option('-m, --mode <type>', 'set build mode type. defaults to mp', 'mp')
   .option('-o, --output <path>', 'set outpot path. defaults to ./dist', './dist')
   .option('-p, --port <port>', 'set dev-server port. defaults to 8080', '8080')
+  .option('--analyze', 'analyze production bundle size')
   .option('--open', 'auto open browser')
   .option('--pages <path>', 'set pages config path. defaults to ./src/pages.js', './src/pages.js')
 

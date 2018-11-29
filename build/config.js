@@ -28,5 +28,5 @@ module.exports = {
   productionSourceMap: false,
   productionGzip: false,
   productionGzipExtensions: ['js', 'css'],
-  bundleAnalyzerReport: process.env.npm_config_report
+  bundleAnalyzerReport: !!program.analyze
 }
