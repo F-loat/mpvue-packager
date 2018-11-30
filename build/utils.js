@@ -6,21 +6,21 @@ const merge = require('webpack-merge')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const config = require('./config')
 
-exports.resolve = function (...dir) {
+function resolve(...dir) {
   return path.join(process.cwd(), ...dir)
 }
 
-exports.assetsPath = function (_path) {
-  const assetsSubDirectory = config.assetsSubDirectory
+function assetsPath(_path) {
+  const { assetsSubDirectory } = config
 
   return path.posix.join(assetsSubDirectory, _path)
 }
 
-exports.mergeExtraConfig = function (config) {
+function mergeExtraConfig(config) {
   let extraWebpackConfig
 
   try {
-    extraWebpackConfig = require(utils.resolve(program.config))
+    extraWebpackConfig = require(resolve(program.config))
   } catch (err) {
     extraWebpackConfig = {}
   }
@@ -34,7 +34,7 @@ exports.mergeExtraConfig = function (config) {
   return config
 }
 
-exports.cssLoaders = function (options) {
+function cssLoaders(options) {
   options = options || {}
 
   const cssLoader = {
@@ -63,7 +63,7 @@ exports.cssLoaders = function (options) {
   // generate loader string to be used with extract text plugin
   function generateLoaders (loader, loaderOptions) {
     const loaders = [cssLoader]
-    
+
     if (options.usePostCSS) {
       loaders.push(postcssLoader)
     }
@@ -107,9 +107,9 @@ exports.cssLoaders = function (options) {
 }
 
 // Generate loaders for standalone style files (outside of .vue)
-exports.styleLoaders = function (options) {
+function styleLoaders(options) {
   const output = []
-  const loaders = exports.cssLoaders(options)
+  const loaders = cssLoaders(options)
 
   for (const extension in loaders) {
     const loader = loaders[extension]
@@ -120,4 +120,12 @@ exports.styleLoaders = function (options) {
   }
 
   return output
+}
+
+module.exports = {
+  resolve,
+  assetsPath,
+  mergeExtraConfig,
+  cssLoaders,
+  styleLoaders
 }
