@@ -5,6 +5,21 @@ const program = require('commander')
 
 const { MODE, NODE_ENV, PORT } = process.env;
 
+const fileExtConfig = {
+  swan: {
+    template: 'swan',
+    script: 'js',
+    style: 'css',
+    platform: 'swan'
+  },
+  wx: {
+    template: 'wxml',
+    script: 'js',
+    style: 'wxss',
+    platform: 'wx'
+  }
+}
+
 module.exports = {
   env: {
     MODE: JSON.stringify(MODE),
@@ -16,7 +31,7 @@ module.exports = {
   proxyTable: {},
   host: 'localhost',
   port: PORT || program.port,
-  autoOpenBrowser: !!program.open,
+  autoOpenBrowser: program.open,
   errorOverlay: true,
   notifyOnErrors: true,
   poll: false,
@@ -28,5 +43,6 @@ module.exports = {
   productionSourceMap: false,
   productionGzip: false,
   productionGzipExtensions: ['js', 'css'],
-  bundleAnalyzerReport: !!program.analyze
+  bundleAnalyzerReport: program.analyze,
+  fileExt: fileExtConfig[program.target]
 }

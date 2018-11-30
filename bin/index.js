@@ -7,8 +7,9 @@ program
   .option('-m, --mode <type>', 'set build mode type. defaults to mp', 'mp')
   .option('-o, --output <path>', 'set outpot path. defaults to ./dist', './dist')
   .option('-p, --port <port>', 'set dev-server port. defaults to 8080', '8080')
-  .option('--analyze', 'analyze production bundle size')
-  .option('--open', 'auto open browser')
+  .option('-t, --target <platform>', 'set target platform. defaults to wx', 'wx')
+  .option('--analyze', 'analyze production bundle size. defaults to false', false)
+  .option('--open', 'auto open browser. defaults to false', false)
   .option('--pages <path>', 'set pages config path. defaults to ./src/pages.js', './src/pages.js')
 
 program

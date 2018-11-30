@@ -5,6 +5,8 @@ const program = require('commander')
 const webpack = require('webpack')
 const MpvueEntry = require('mpvue-entry')
 const MpvuePlugin = require('webpack-mpvue-asset-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 const config = require('../config')
@@ -30,8 +32,9 @@ module.exports = {
   target: require('mpvue-webpack-target'),
   output: {
     path: config.assetsRoot,
-    filename: '[name].js',
-    publicPath: '/'
+    publicPath: '/',
+    filename: utils.assetsPath('[name].js'),
+    chunkFilename: utils.assetsPath('[id].js')
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -92,6 +95,17 @@ module.exports = {
     new MpvuePlugin(),
     new MpvueEntry(),
     new ProgressBarPlugin(),
+    // extract css into its own file
+    new ExtractTextPlugin({
+      filename: utils.assetsPath(`[name].${config.fileExt.style}`)
+    }),
+    // Compress extracted CSS. We are using this plugin so that possible
+    // duplicated CSS from different components can be deduped.
+    new OptimizeCSSPlugin({
+      cssProcessorOptions: {
+        safe: true
+      }
+    }),
     new CopyWebpackPlugin([
       {
         from: utils.resolve('static'),
@@ -101,6 +115,24 @@ module.exports = {
     ]),
     new webpack.DefinePlugin({
       'process.env': config.env
+    }),
+    // split vendor js into its own file
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'common/vendor',
+      minChunks: function (module, count) {
+        // any required modules inside node_modules are extracted to vendor
+        return (
+          module.resource &&
+          /\.js$/.test(module.resource) &&
+          module.resource.indexOf('node_modules') >= 0
+        ) || count > 1
+      }
+    }),
+    // extract webpack runtime and module manifest to its own file in order to
+    // prevent vendor hash from being updated whenever app bundle is updated
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'common/manifest',
+      chunks: ['common/vendor']
     })
   ]
 }

@@ -3,8 +3,6 @@
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const config = require('../config')
 const utils = require('../utils')
 const baseWebpackConfig = require('./webpack.base.conf')
@@ -17,46 +15,12 @@ const webpackConfig = merge(baseWebpackConfig, {
     })
   },
   devtool: config.productionSourceMap ? config.devtool : false,
-  output: {
-    path: config.assetsRoot,
-    filename: utils.assetsPath('[name].js'),
-    chunkFilename: utils.assetsPath('[id].js')
-  },
   plugins: [
     new UglifyJsPlugin({
       sourceMap: true
     }),
-    // extract css into its own file
-    new ExtractTextPlugin({
-      filename: utils.assetsPath('[name].wxss')
-    }),
-    // Compress extracted CSS. We are using this plugin so that possible
-    // duplicated CSS from different components can be deduped.
-    new OptimizeCSSPlugin({
-      cssProcessorOptions: {
-        safe: true
-      }
-    }),
     // keep module.id stable when vender modules does not change
-    new webpack.HashedModuleIdsPlugin(),
-    // split vendor js into its own file
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'common/vendor',
-      minChunks: function (module, count) {
-        // any required modules inside node_modules are extracted to vendor
-        return (
-          module.resource &&
-          /\.js$/.test(module.resource) &&
-          module.resource.indexOf('node_modules') >= 0
-        ) || count > 1
-      }
-    }),
-    // extract webpack runtime and module manifest to its own file in order to
-    // prevent vendor hash from being updated whenever app bundle is updated
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'common/manifest',
-      chunks: ['common/vendor']
-    })
+    new webpack.HashedModuleIdsPlugin()
   ]
 })
 
