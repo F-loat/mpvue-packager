@@ -9,7 +9,7 @@ const chalk = require('chalk')
 const webpack = require('webpack')
 const config = require('./config')
 const webpackConfig = require(`./${process.env.MODE}/webpack.prod.conf`)
-const { mergeExtraConfig } = require('../utils')
+const { mergeExtraConfig } = require('./utils')
 
 const finallyWebpackConfig = mergeExtraConfig(webpackConfig)
 
