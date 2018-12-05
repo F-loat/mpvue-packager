@@ -25,10 +25,7 @@ const createLintingRule = () => ({
 })
 
 module.exports = {
-  entry: MpvueEntry.getEntry({
-    pages: program.pages,
-    dist: config.assetsRoot
-  }),
+  entry: MpvueEntry.getEntry(),
   target: require('mpvue-webpack-target'),
   output: {
     path: config.assetsRoot,

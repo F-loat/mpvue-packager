@@ -10,7 +10,6 @@ program
   .option('-t, --target <platform>', 'set target platform. defaults to wx', 'wx')
   .option('--analyze', 'analyze production bundle size. defaults to false', false)
   .option('--open', 'auto open browser. defaults to false', false)
-  .option('--pages <path>', 'set pages config path. defaults to ./src/pages.js', './src/pages.js')
 
 program
   .command('dev')
