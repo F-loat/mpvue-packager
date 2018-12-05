@@ -75,6 +75,11 @@ npm i mpvue-packager -D
 
 ## Change log
 
+* v0.1.8
+
+  - [fix] 生产环境打包配置
+  - [feat] 更新 mpvue-entry
+
 * v0.1.5
 
   - [feat] 新增打包进度显示
