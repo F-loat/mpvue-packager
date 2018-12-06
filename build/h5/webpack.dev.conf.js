@@ -54,7 +54,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: config.index,
-      template: 'index.html',
+      template: config.htmlTemplate,
       inject: true
     })
   ]

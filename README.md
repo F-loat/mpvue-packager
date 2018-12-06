@@ -72,6 +72,8 @@ npm i mpvue-packager -D
 
 * 自定义配置支持 `['object', 'function']` 两种形式，`object` 类型会与默认配置做合并处理，`function` 类型的入参为现有配置，需返回修改后的配置
 
+* 可通过 package.json 的 packagerOptions 属性对内部 [config](./build/config.js) 进行覆盖
+
 
 ## Change log
 

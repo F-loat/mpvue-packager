@@ -2,8 +2,10 @@
 
 const path = require('path')
 const program = require('commander')
+const { resolve } = require('./utils')
 
 const { MODE, NODE_ENV, PORT } = process.env;
+const { packagerOptions } = resolve('package.json')
 
 const fileExtConfig = {
   swan: {
@@ -20,12 +22,13 @@ const fileExtConfig = {
   }
 }
 
-module.exports = {
+module.exports = Object.assign({
   env: {
     MODE: JSON.stringify(MODE),
     NODE_ENV: JSON.stringify(NODE_ENV)
   },
   index: path.join(process.cwd(), program.output, 'index.html'),
+  htmlTemplate: 'index.html',
   assetsRoot: path.join(process.cwd(), program.output),
   assetsSubDirectory: MODE === 'mp' ? '' : 'static',
   proxyTable: {},
@@ -45,4 +48,4 @@ module.exports = {
   productionGzipExtensions: ['js', 'css'],
   bundleAnalyzerReport: program.analyze,
   fileExt: fileExtConfig[program.target]
-}
+}, packagerOptions)
