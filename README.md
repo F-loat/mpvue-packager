@@ -15,7 +15,10 @@ vue init F-loat/mpvue-quickstart#next my-project
 ## 安装
 
 ``` bash
-npm i mpvue-packager -D
+npm i -D mpvue-packager
+
+npm i -D mpvue-packager-mp-plugin
+npm i -D mpvue-packager-h5-plugin
 ```
 
 
