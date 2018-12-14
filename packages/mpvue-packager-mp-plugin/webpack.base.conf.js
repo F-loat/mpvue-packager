@@ -1,7 +1,6 @@
 'use strict'
 
 const path = require('path')
-const program = require('commander')
 const webpack = require('webpack')
 const MpvueEntry = require('mpvue-entry')
 const MpvuePlugin = require('webpack-mpvue-asset-plugin')
@@ -9,9 +8,9 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
-const config = require('../config')
-const utils = require('../utils')
-const vueLoaderConfig = require('../vue-loader.conf')
+const config = require('mpvue-packager/lib/config')
+const utils = require('mpvue-packager/lib/utils')
+const vueLoaderConfig = require('mpvue-packager/lib/vue-loader.conf')
 
 const createLintingRule = () => ({
   test: /\.(js|vue)$/,

@@ -3,9 +3,9 @@
 const webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ProgressBarPlugin = require('progress-bar-webpack-plugin')
-const config = require('../config')
-const utils = require('../utils')
-const vueLoaderConfig = require('../vue-loader.conf')
+const config = require('mpvue-packager/lib/config')
+const utils = require('mpvue-packager/lib/utils')
+const vueLoaderConfig = require('mpvue-packager/lib/vue-loader.conf')
 
 const createLintingRule = () => ({
   test: /\.(js|vue)$/,

@@ -1,0 +1,32 @@
+{
+  "name": "mpvue-packager-mp-plugin",
+  "version": "0.2.0",
+  "description": "mpvue 集成构建工具 mp 端配置",
+  "main": "dev.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/F-loat/mpvue-packager.git"
+  },
+  "keywords": [
+    "mpvue",
+    "packager",
+    "webpack"
+  ],
+  "author": "F-loat<chaimaoyuan@foxmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "mpvue-entry": "next",
+    "mpvue-loader": "^1.1.2",
+    "mpvue-webpack-target": "^1.0.0",
+    "postcss-mpvue-wxss": "^1.0.0",
+    "px2rpx-loader": "^0.1.0",
+    "webpack-dev-middleware-hard-disk": "^1.12.0",
+    "webpack-mpvue-asset-plugin": "^0.1.0"
+  },
+  "peerDependencies": {
+    "mpvue-packager": "^0.2.0"
+  }
+}

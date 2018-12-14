@@ -17,7 +17,8 @@ program
   .action(() => {
     process.env.NODE_ENV = 'development'
     process.env.MODE = program.mode
-    require(`../build/${program.mode}/dev`)
+    require('../lib/check-versions')()
+    require(`mpvue-packager-${program.mode}-plugin/dev`)
   })
 
 program
@@ -26,7 +27,8 @@ program
   .action(() => {
     process.env.NODE_ENV = 'production'
     process.env.MODE = program.mode
-    require('../build/build')
+    require('../lib/check-versions')()
+    require('../lib/build')
   })
 
 program.parse(process.argv)

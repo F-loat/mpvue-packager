@@ -5,9 +5,9 @@ const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
+const config = require('mpvue-packager/lib/config')
+const utils = require('mpvue-packager/lib/utils')
 const baseWebpackConfig = require('./webpack.base.conf')
-const config = require('../config')
-const utils = require('../utils')
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)

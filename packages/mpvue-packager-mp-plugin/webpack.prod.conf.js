@@ -3,8 +3,8 @@
 const webpack = require('webpack')
 const merge = require('webpack-merge')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const config = require('../config')
-const utils = require('../utils')
+const config = require('mpvue-packager/lib/config')
+const utils = require('mpvue-packager/lib/utils')
 const baseWebpackConfig = require('./webpack.base.conf')
 
 const webpackConfig = merge(baseWebpackConfig, {

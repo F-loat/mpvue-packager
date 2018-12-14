@@ -7,9 +7,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const config = require('mpvue-packager/lib/config')
+const utils = require('mpvue-packager/lib/utils')
 const baseWebpackConfig = require('./webpack.base.conf')
-const config = require('../config')
-const utils = require('../utils')
 
 const webpackConfig = merge(baseWebpackConfig, {
   module: {

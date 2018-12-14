@@ -1,10 +1,8 @@
 'use strict'
 
-require('../check-versions')()
-
 const webpack = require('webpack')
 const WebpackDevServer = require('webpack-dev-server')
-const { mergeExtraConfig } = require('../utils')
+const { mergeExtraConfig } = require('mpvue-packager/lib/utils')
 
 module.exports = require('./webpack.dev.conf').then(webpackConfig => {
   const finallyWebpackConfig = mergeExtraConfig(webpackConfig)
