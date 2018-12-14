@@ -77,6 +77,11 @@ npm i mpvue-packager -D
 
 ## Change log
 
+* v0.2.0
+
+  - [feat] 分离不同平台配置
+  - [feat] 支持通过 package.json 覆盖配置
+
 * v0.1.8
 
   - [fix] 生产环境打包配置
