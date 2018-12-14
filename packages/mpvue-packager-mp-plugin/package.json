@@ -1,6 +1,6 @@
 {
   "name": "mpvue-packager-mp-plugin",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "mpvue 集成构建工具 mp 端配置",
   "main": "dev.js",
   "scripts": {
@@ -27,6 +27,6 @@
     "webpack-mpvue-asset-plugin": "^0.1.0"
   },
   "peerDependencies": {
-    "mpvue-packager": "^0.2.0"
+    "mpvue-packager": "^0.2.1"
   }
 }

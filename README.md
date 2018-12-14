@@ -80,6 +80,10 @@ npm i -D mpvue-packager-h5-plugin
 
 ## Change log
 
+* v0.2.1
+
+  - [fix] 文件发布规则
+
 * v0.2.0
 
   - [feat] 分离不同平台配置
