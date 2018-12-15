@@ -1,0 +1,25 @@
+{
+  "pages": [
+    "pages/index",
+    "pages/counter"
+  ],
+  "subpackages": [
+    {
+      "root": "packageA",
+      "pages": [
+        {
+          "path": "logs",
+          "config": {
+            "navigationBarTitleText": "查看启动日志"
+          }
+        }
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  }
+}

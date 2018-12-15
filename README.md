@@ -5,10 +5,8 @@
 
 ## Quickstart
 
-> https://github.com/F-loat/mpvue-quickstart
-
 ``` bash
-vue init F-loat/mpvue-quickstart#next my-project
+vue init F-loat/mpvue-packager my-project
 ```
 
 
