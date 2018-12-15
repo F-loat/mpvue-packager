@@ -37,6 +37,11 @@
     "mpvue-packager-mp-plugin": "^0.2.0",
     "mpvue-template-compiler": "^1.0.0"
   },
+  {{#if_eq lint false}}
+  "packagerOptions": {
+    "useEslint": false
+  },
+  {{/if_eq}}
   "engines": {
     "node": ">= 4.0.0",
     "npm": ">= 3.0.0"

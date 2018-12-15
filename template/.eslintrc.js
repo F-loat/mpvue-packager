@@ -27,7 +27,7 @@ module.exports = {
   'settings': {
     'import/resolver': {
       'webpack': {
-        'config': require.resolve('mpvue-packager/build/webpack.base.conf.js')
+        'config': require.resolve(`mpvue-packager-${process.env.MODE}-plugin/webpack.base.conf.js`)
       }
     }
   },
@@ -45,10 +45,6 @@ module.exports = {
     'import/extensions': ['error', 'always', {
       'js': 'never',
       'vue': 'never'
-    }],
-    // allow optionalDependencies
-    'import/no-extraneous-dependencies': ['error', {
-      'optionalDependencies': ['test/unit/index.js']
     }],
     {{/if_eq}}
     // allow debugger during development
