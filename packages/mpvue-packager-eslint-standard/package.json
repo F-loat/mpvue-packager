@@ -1,0 +1,27 @@
+{
+  "name": "mpvue-packager-eslint-standard",
+  "version": "0.2.2",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/F-loat/mpvue-packager.git"
+  },
+  "keywords": [
+    "mpvue",
+    "packager",
+    "webpack"
+  ],
+  "author": "F-loat<chaimaoyuan@foxmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-eslint": "^8.2.0",
+    "eslint": "^4.19.0",
+    "eslint-friendly-formatter": "^4.0.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-node": "^6.0.0",
+    "eslint-plugin-html": "^4.0.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^3.0.0"
+  }
+}
