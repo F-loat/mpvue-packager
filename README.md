@@ -78,6 +78,12 @@ npm i -D mpvue-packager-h5-plugin
 
 ## Change log
 
+* v0.2.2
+
+  - [fix] 外部配置读取
+  - [feat] 整合 lint 依赖
+  - [feat] 优化 loader 顺序
+
 * v0.2.1
 
   - [fix] 文件发布规则

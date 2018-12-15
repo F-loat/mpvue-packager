@@ -1,6 +1,6 @@
 {
   "name": "mpvue-packager-mp-plugin",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "mpvue 集成构建工具 mp 端配置",
   "main": "dev.js",
   "scripts": {
@@ -19,7 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "mpvue-entry": "next",
-    "mpvue-loader": "^1.1.2",
+    "mpvue-loader": "^1.1.0",
     "mpvue-webpack-target": "^1.0.0",
     "postcss-mpvue-wxss": "^1.0.0",
     "px2rpx-loader": "^0.1.0",
@@ -27,6 +27,6 @@
     "webpack-mpvue-asset-plugin": "^0.1.0"
   },
   "peerDependencies": {
-    "mpvue-packager": "^0.2.1"
+    "mpvue-packager": "^0.2.0"
   }
 }
