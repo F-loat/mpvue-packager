@@ -1,5 +1,6 @@
 <script>
 export default {
+  mpType: 'app',
   created{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
     // 调用API从本地缓存中获取数据
     const logs = wx.getStorageSync('logs') || []{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
