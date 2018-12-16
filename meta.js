@@ -67,7 +67,6 @@ module.exports = {
   },
   "filters": {
     ".eslintrc.js": "lint",
-    ".eslintignore": "lint",
     "src/pages/counter.vue": "vuex",
     "src/store/*": "vuex"
   },
