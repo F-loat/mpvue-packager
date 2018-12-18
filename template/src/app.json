@@ -3,7 +3,7 @@
     "pages/index"{{#vuex}},
     "pages/counter"{{/vuex}}
   ],
-  "subpackages": [
+  "subPackages": [
     {
       "root": "packageA",
       "pages": [
