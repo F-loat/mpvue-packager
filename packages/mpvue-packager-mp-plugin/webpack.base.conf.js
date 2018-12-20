@@ -12,17 +12,6 @@ const config = require('mpvue-packager/lib/config')
 const utils = require('mpvue-packager/lib/utils')
 const vueLoaderConfig = require('mpvue-packager/lib/vue-loader.conf')
 
-const createLintingRule = () => ({
-  test: /\.(js|vue)$/,
-  loader: 'eslint-loader',
-  enforce: 'pre',
-  include: utils.resolve('src'),
-  options: {
-    formatter: require('eslint-friendly-formatter'),
-    emitWarning: !config.showEslintErrorsInOverlay
-  }
-})
-
 module.exports = {
   entry: MpvueEntry.getEntry('src/app.json'),
   target: require('mpvue-webpack-target'),
@@ -44,7 +33,7 @@ module.exports = {
   },
   module: {
     rules: [
-      ...(config.useEslint ? [createLintingRule()] : []),
+      ...(config.useEslint ? [utils.createLintingRule(config)] : []),
       {
         test: /\.vue$/,
         loader: 'mpvue-loader',
