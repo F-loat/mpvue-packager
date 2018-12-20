@@ -24,6 +24,7 @@
     "webpack-dev-server": "^2.9.0"
   },
   "peerDependencies": {
-    "mpvue-packager": "^0.2.0"
+    "mpvue-packager": "^0.2.0",
+    "opn": "^5.1.0"
   }
 }

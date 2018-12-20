@@ -29,14 +29,13 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         { from: /.*/, to: 'index.html' },
       ],
     },
-    hot: true,
     inline: true,
     contentBase: false, // since we use CopyWebpackPlugin.
     compress: true,
     host: HOST || config.host,
     hot: true,
     port: PORT || config.port,
-    open: config.autoOpenBrowser,
+    open: false,
     overlay: config.errorOverlay
       ? { warnings: false, errors: true }
       : false,
@@ -66,6 +65,8 @@ module.exports = new Promise((resolve, reject) => {
     if (err) {
       reject(err)
     } else {
+      const uri = `http://${devWebpackConfig.devServer.host}:${port}`
+
       // publish the new Port, necessary for e2e tests
       process.env.PORT = port
       // add port to devServer config
@@ -74,10 +75,13 @@ module.exports = new Promise((resolve, reject) => {
       // Add FriendlyErrorsPlugin
       devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
         compilationSuccessInfo: {
-          messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`],
-        },
-        onErrors: undefined
+          messages: [`Your application is running here: ${uri}`],
+        }
       }))
+
+      if (config.autoOpenBrowser) {
+        require('opn')(uri)
+      }
 
       resolve(devWebpackConfig)
     }
