@@ -134,3 +134,4 @@ npm i -D mpvue-packager-h5-plugin
 ## 示例项目
 
 * [ithome-lite](https://github.com/F-loat/ithome-lite) - IT之家第三方小程序版客户端
+* [mpvue-echarts](https://github.com/F-loat/mpvue-echarts/tree/master/examples) - ECharts 组件使用示例
