@@ -1,6 +1,6 @@
 {
   "name": "mpvue-packager-h5-plugin",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "mpvue 集成构建工具 h5 端配置",
   "main": "dev.js",
   "scripts": {

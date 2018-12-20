@@ -78,6 +78,11 @@ npm i -D mpvue-packager-h5-plugin
 
 ## Change log
 
+* v0.2.3
+
+  - [fix] 浏览器自动打开指令
+  - [feat] 调整默认自定义配置文件
+
 * v0.2.2
 
   - [fix] 外部配置读取
