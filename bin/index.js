@@ -3,7 +3,7 @@
 const program = require('commander')
 
 program
-  .option('-c, --config <path>', 'set webpack config path. defaults to ./webpack.conf.js', './webpack.conf.js')
+  .option('-c, --config <path>', 'set webpack config path. defaults to ./packager.config.js', './packager.config')
   .option('-m, --mode <type>', 'set build mode type. defaults to mp', 'mp')
   .option('-o, --output <path>', 'set outpot path. defaults to ./dist', './dist')
   .option('-p, --port <port>', 'set dev-server port. defaults to 8080', '8080')

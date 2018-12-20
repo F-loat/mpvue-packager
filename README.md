@@ -38,7 +38,7 @@ npm i -D mpvue-packager-h5-plugin
 
 * 打包配置
 
-通过 `-c` 或 `--config` 指定自定义打包配置文件，默认为 `webpack.conf.js`
+通过 `-c` 或 `--config` 指定自定义 webpack 配置文件，默认为 `packager.config.js`
 
 * 打包模式
 
