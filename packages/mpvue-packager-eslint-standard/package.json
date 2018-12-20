@@ -1,6 +1,7 @@
 {
   "name": "mpvue-packager-eslint-standard",
   "version": "0.2.2",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/F-loat/mpvue-packager.git"
